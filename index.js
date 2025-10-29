@@ -16,7 +16,7 @@ const recipesNames = (data) => {
   let list = [];
   if (!data) {
     console.log("No recipes found");
-    return [] || null;
+    return null;
   };
   for (const { Name } of data) {
     list.push(Name);
@@ -28,7 +28,7 @@ const recipesByAuthor = (data, auth) => {
   let list = [];
   if (!data || !auth) {
     console.log("No recipes or author found");
-    return [] || null;
+    return null;
   }
 
   const recipes = data.filter((item) => item.Author === auth);
@@ -41,7 +41,7 @@ const recipesByAuthor = (data, auth) => {
 const recipeByIngredient = (data, ingredient) => {
   if (!data || !ingredient) {
     console.log("No recipes found");
-    return [] || null;
+    return null;
   };
   const found = data.filter((item) =>
     item.Ingredients.some((i) => i.includes(ingredient))
@@ -53,7 +53,7 @@ const recipeByIngredient = (data, ingredient) => {
 const recipeByName = (data, recName) => {
   if (!data) {
     console.log("No recipe found");
-    return [] || null;
+    return null;
   }
   const rec = data.find((item) =>
     item.Name.toLowerCase().includes(recName.toLowerCase())
@@ -64,7 +64,7 @@ const recipeByName = (data, recName) => {
 const recipeIngredients = (data) => {
   if (!data) {
     console.log("No recipes found");
-    return [] || null;
+    return null;
   };
   return data.reduce((allIngredients, recipe) => {
     return allIngredients.concat(recipe.Ingredients);
