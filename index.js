@@ -104,23 +104,27 @@ do {
       console.log(recipeByIngredient(cakeRecipes, ingredient));
       break; 
     case 4:
-      let list = [];
       const recipeName = prompt("Enter recipe name: ");
       const foundRecipe = recipeByName(cakeRecipes, recipeName);
       if (!foundRecipe) {
         console.log("No recipes found");
       } else {
+        console.log(foundRecipe);
         const save = prompt(
           "Do you want to save the ingerdients of this recipe? (y/n): "
         );
         if (save.toLowerCase() === "y") {
-          list.push(foundRecipe);
-          savedList.concat(...recipeIngredients(list));
+          savedList.push(foundRecipe);
+          console.log("Saved");
         };
       };
       break;
     case 5:
-      console.log(savedList);
+      if(savedList.length > 0){
+        console.log(recipeIngredients(savedList));
+      } else {
+        console.log("No ingredients saved")
+      }
       break;
     case 0:
       console.log("Exiting...");
